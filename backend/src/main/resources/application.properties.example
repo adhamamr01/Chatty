@@ -1,0 +1,87 @@
+# ============================================
+# CHAT APPLICATION - CONFIGURATION TEMPLATE
+# ============================================
+# Copy this file to application.properties and fill in your values
+# DO NOT commit application.properties to version control!
+
+# Application
+spring.application.name=chat-app-backend
+server.port=8080
+
+# ============================================
+# DATABASE CONFIGURATION
+# ============================================
+# Replace with your PostgreSQL credentials
+spring.datasource.url=jdbc:postgresql://localhost:5432/chatapp
+spring.datasource.username=YOUR_DB_USERNAME
+spring.datasource.password=YOUR_DB_PASSWORD
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# ============================================
+# JPA/HIBERNATE
+# ============================================
+# Options: create, create-drop, validate, update, none
+# Use 'update' for development, 'validate' for production
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.format_sql=true
+
+# ============================================
+# JWT CONFIGURATION
+# ============================================
+# Generate a secure secret key using: openssl rand -base64 64
+# IMPORTANT: Keep this secret! Never commit the actual value!
+jwt.secret=REPLACE_WITH_YOUR_GENERATED_SECRET_KEY_MINIMUM_64_CHARACTERS
+# Token expiration in milliseconds (86400000 = 24 hours)
+jwt.expiration=86400000
+
+# ============================================
+# CORS CONFIGURATION
+# ============================================
+# Comma-separated list of allowed origins
+# Add your frontend URLs here
+cors.allowed-origins=http://localhost:3000,http://localhost:8081,http://localhost:8080
+
+# ============================================
+# WEBSOCKET CONFIGURATION
+# ============================================
+# Comma-separated list of allowed WebSocket origins
+websocket.allowed-origins=http://localhost:3000,http://localhost:8081
+
+# ============================================
+# LOGGING
+# ============================================
+# Options: TRACE, DEBUG, INFO, WARN, ERROR
+logging.level.com.chatapp=DEBUG
+logging.level.org.springframework.web=INFO
+logging.level.org.springframework.security=INFO
+
+# ============================================
+# JACKSON JSON CONFIGURATION
+# ============================================
+spring.jackson.serialization.write-dates-as-timestamps=false
+spring.jackson.time-zone=UTC
+
+# ============================================
+# FILE UPLOAD CONFIGURATION
+# ============================================
+spring.servlet.multipart.max-file-size=10MB
+spring.servlet.multipart.max-request-size=10MB
+
+# ============================================
+# ERROR HANDLING
+# ============================================
+server.error.include-message=always
+server.error.include-binding-errors=always
+server.error.include-stacktrace=on_param
+server.error.include-exception=false
+
+# ============================================
+# NOTES
+# ============================================
+# 1. Generate JWT secret: openssl rand -base64 64
+# 2. Create database: createdb chatapp
+# 3. Update database credentials above
+# 4. Copy this file to application.properties
+# 5. Never commit application.properties to git!

@@ -1,0 +1,296 @@
+# ============================================
+# JAVA / SPRING BOOT
+# ============================================
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# ============================================
+# GRADLE
+# ============================================
+
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Gradle Wrapper
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# ============================================
+# INTELLIJ IDEA
+# ============================================
+
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# ============================================
+# ECLIPSE
+# ============================================
+
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# ============================================
+# NETBEANS
+# ============================================
+
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# ============================================
+# VS CODE
+# ============================================
+
+.vscode/
+*.code-workspace
+
+# ============================================
+# MAC OS
+# ============================================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# ============================================
+# WINDOWS
+# ============================================
+
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# ============================================
+# LINUX
+# ============================================
+
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+# ============================================
+# APPLICATION SPECIFIC
+# ============================================
+
+# Environment variables (SENSITIVE!)
+.env
+.env.local
+.env.*.local
+
+# Application properties with sensitive data
+application-*.properties
+!application-dev.properties.example
+!application-prod.properties.example
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log.*
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# ============================================
+# KOTLIN / COMPOSE MULTIPLATFORM (CLIENT)
+# ============================================
+
+# Kotlin
+*.kt.swp
+
+# Compose Multiplatform
+.kotlin/
+composeApp/.kotlin/
+
+# Node modules (for web)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Android
+*.apk
+*.aab
+*.ap_
+*.dex
+local.properties
+.externalNativeBuild
+.cxx
+captures/
+.navigation/
+
+# iOS (if adding iOS support later)
+*.xcodeproj
+*.xcworkspace
+Pods/
+*.hmap
+*.ipa
+DerivedData/
+
+# ============================================
+# DOCUMENTATION
+# ============================================
+
+# Ignore generated documentation (keep source docs)
+# Uncomment if you have generated docs
+# docs/generated/
+
+# ============================================
+# SECRETS (IMPORTANT!)
+# ============================================
+
+# Never commit these!
+*secret*
+*password*
+*credentials*
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+
+# But allow files that contain "secret" in name but are safe
+!*secretsmanager*
+!src/**/example.*
+
+# JWT Secret should be in environment variables, not committed
+application.properties
+!application.properties.example
+
+# ============================================
+# TESTING
+# ============================================
+
+# Test coverage reports
+coverage/
+*.coverage
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# ============================================
+# MISC
+# ============================================
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Editor specific
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Package manager lock files (include or exclude based on preference)
+# package-lock.json
+# yarn.lock
