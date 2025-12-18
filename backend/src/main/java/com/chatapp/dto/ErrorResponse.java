@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -55,8 +56,17 @@ public class ErrorResponse {
             description = "Timestamp when the error occurred",
             example = "2024-01-15T10:30:00"
     )
-    @Builder.Default
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private String timestamp;
+
+    /**
+     * Custom builder method to automatically format timestamp
+     */
+    public static class ErrorResponseBuilder {
+        public ErrorResponseBuilder timestamp(LocalDateTime timestamp) {
+            this.timestamp = timestamp.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            return this;
+        }
+    }
 
     @Data
     @Builder

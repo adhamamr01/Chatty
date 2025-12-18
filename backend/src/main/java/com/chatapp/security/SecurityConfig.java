@@ -116,6 +116,8 @@ public class SecurityConfig {
                         // Public endpoints (no authentication required)
                         .requestMatchers(
                                 "/api/auth/**",           // Authentication endpoints
+                                "/api/health",            // Health check endpoint
+                                "/api/ping",              // Ping endpoint
                                 "/ws/**",                 // WebSocket endpoint (authenticated in WebSocket config)
                                 "/v3/api-docs/**",        // OpenAPI docs
                                 "/swagger-ui/**",         // Swagger UI
