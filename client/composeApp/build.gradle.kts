@@ -37,6 +37,7 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.ktor.client.websockets)
             implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.client.okhttp)
 
             // Serialization
             implementation(libs.kotlinx.serialization.json)
@@ -44,6 +45,11 @@ kotlin {
             // Voyager
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.screenmodel)
+
+            // Krossbow STOMP
+            implementation(libs.krossbow.stomp.core)
+            implementation(libs.krossbow.stomp.kxserialization.json)
+            implementation(libs.krossbow.websocket.ktor)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -61,6 +67,9 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        manifestPlaceholders["usesCleartextTraffic"] = "true"
+
     }
     packaging {
         resources {
@@ -70,6 +79,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+        }
+        getByName("debug") {
+            // Allow cleartext for debug builds only
+            manifestPlaceholders["usesCleartextTraffic"] = "true"
         }
     }
     compileOptions {

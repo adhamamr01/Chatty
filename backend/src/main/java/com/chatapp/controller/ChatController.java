@@ -311,4 +311,58 @@ public class ChatController {
 
         return ResponseEntity.ok(ApiResponse.success("All messages marked as read"));
     }
+
+    /**
+     * Sends a message to a chat room via REST API (alternative to WebSocket).
+     *
+     * @param chatRoomId Chat room ID
+     * @param request Request containing message content
+     * @return ApiResponse with the sent message
+     */
+    @PostMapping("/chats/{chatRoomId}/messages")
+    @Operation(
+            summary = "Send a message",
+            description = "Sends a new message to the specified chat room. " +
+                    "User must be a member of the chat room."
+    )
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    responseCode = "201",
+                    description = "Message sent successfully",
+                    content = @Content(schema = @Schema(implementation = ApiResponse.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid request - empty message",
+                    content = @Content(schema = @Schema(implementation = ApiResponse.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    responseCode = "403",
+                    description = "Not a member of this chat room",
+                    content = @Content(schema = @Schema(implementation = ApiResponse.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    responseCode = "404",
+                    description = "Chat room not found",
+                    content = @Content(schema = @Schema(implementation = ApiResponse.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    responseCode = "401",
+                    description = "Unauthorized - Invalid or missing token",
+                    content = @Content(schema = @Schema(implementation = ApiResponse.class))
+            )
+    })
+    public ResponseEntity<ApiResponse<MessageDTO>> sendMessage(
+            @Parameter(description = "ID of the chat room", required = true)
+            @PathVariable Long chatRoomId,
+            @Valid @RequestBody SendMessageRequest request) {
+
+        log.info("POST /api/chats/{}/messages - Sending message", chatRoomId);
+
+        MessageDTO message = chatService.sendMessage(chatRoomId, request.getContent());
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(ApiResponse.success("Message sent successfully", message));
+    }
 }
