@@ -153,6 +153,23 @@ class ApiClient {
         }
     }
 
+    suspend fun sendMessage(chatRoomId: Long, content: String): Result<Message> {
+        return try {
+            val response: ApiResponse<Message> = client.post("/api/chats/$chatRoomId/messages") {
+                authToken?.let { bearerAuth(it) }
+                setBody(mapOf("content" to content))
+            }.body()
+
+            if (response.success && response.data != null) {
+                Result.success(response.data)
+            } else {
+                Result.failure(Exception(response.message ?: "Failed to send message"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
     // Helper data class for pagination
     @kotlinx.serialization.Serializable
     data class PageResponse(
